@@ -9,11 +9,13 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 
 
-module.exports=function(status){
+module.exports=function(status,data){
     console.log(status);
+    console.log("pdf")
+    console.log(data.name);
 
     router.post('/pdf',(req,res,next)=>{
-        console.log('Helo')
+        console.log(req.body)
         if(status===1){
         var dd = {
             content: [
