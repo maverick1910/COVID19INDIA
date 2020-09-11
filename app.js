@@ -1,82 +1,38 @@
-const express = require("express");
+var express=require("express");
+var app= express();
+var bodyParser=require("body-parser");
+app.use(bodyParser.urlencoded({extended:false}));
+var request=require("request");
 
-const bodyParser = require("body-parser");
-var request = require("request");
-var collection=require('./collections/collection');
-
-
-var pdfMake = require('pdfmake/build/pdfmake.js');
-var pdfFonts = require('pdfmake/build/vfs_fonts.js');
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
-
-
-const app = express();
+app.set("view engine","ejs");
+app.use('*/css',express.static('public/css'));
+app.use('*/js',express.static('public/js'));
+app.use('*/images',express.static('public/images'));
 
 
-app.set("view engine", "ejs");
-app.use('*/css', express.static('public/css'));
-app.use('*/js', express.static('public/js'));
-app.use('*/images', express.static('public/images'));
-
-
-app.get("/", function (req, res) {
+app.get("/",function(req,res){
     res.render("index");
 });
 
-
-app.get("/e-pass", function (req, res) {
-    res.render("e-pass",{collection:collection});
+app.get("/e-pass",function(req,res){
+    res.render("e-pass");
 });
 
 
-const pdfRoute = require('./routes/pdfgen');
-    app.use('/', pdfRoute);
 
+app.post("/takementor",function(req,res){
+    var fname=req.body.fname;
+    var lname=req.body.lname;
+    var email=req.body.email;
+    var idcard=req.body.idcard;
+    var source=req.body.source;
+    var destination=req.body.destination;
+    var trip=req.body.trip;
+    res.render("takementor",{data:req.body});
 
+});
 
-app.get('/register', (req, res) => {
-       
-    res.sendFile(__dirname + '/sample.html');
-})
-
-
-app.listen(3000, console.log("Server up at 3000"));
-
-
-
-
-// axios.get('https://api.covid19india.org/v4/data.json').then((res) => {
-//     data = JSON.parse(JSON.stringify(res.data["AP"]["districts"]));
-//     console.log(data[con].total.confirmed);
-    
-// }).catch(function (error) {
-//     console.log("No res data from api")
-// })
-
-// app.use('/e-passgen', urlencodedParser, function (req, res) {
-//     console.log(data);
-
-//     console.log(req.body);
-//     if (data[con].total.confirmed >= data["Chittoor"].total.confirmed) {
-//         status = 1;
-//     }
-//     else { status = 0; }
-//     console.log(status);
-//     const pdfRoute = require('./routes/pdfmake')(status,req.body);
-//     app.use('/pdfMake', pdfRoute);
-//     res.send('welcome, ' + req.body.username)
-//   })
-
-
-// app.use('/api',(req,res )=>{
-
-
-//     console.log(data);
-//      res.json(data);});
-//      console.log(data);
-//  if(data.districts.Anantapur.total.confirmed>=data.districts.Chittoor.total.confirmed)
-//   {
-//     status=1;
-//     }
-//    else{   status=0;}
+//This is the Server Localhost
+app.listen(3000,function(){
+    console.log("The server has started");
+});

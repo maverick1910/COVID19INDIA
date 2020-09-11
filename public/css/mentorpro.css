@@ -79,3 +79,12 @@ li{
 #sec{
     margin-top: 10px;
 }
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1; /* Firefox */
+  }
+#res{
+    color: black;
+    width: 1000px;
+    margin-left: 100px;
+}
