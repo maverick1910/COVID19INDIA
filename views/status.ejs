@@ -37,7 +37,7 @@
             <div class="row mb-3">
                 
                 <div  class="col-lg-8">
-                    <form id="res" method="POST" action='/pdfgen'>
+                    <form id="res" method="POST" >
                         <div  class="form-row">
                             <div class="col">
                                 <div class="form-group"><label for="username"><strong>First Name</strong></label><input class="form-control" type="text" value="<%= data.fname%>" name="fname" readonly></div>
@@ -55,17 +55,17 @@
                                 <div class="form-group"><label for="last_name"><strong>Aadhar Card </strong></label><input class="form-control" type="text" value="<%= data.idcard%>" name="last_name" readonly></div>
                             </div>
                         </div>
-                        <div class="form-group"><label for="address"><strong>Destination</strong></label><input class="form-control" type="text" value="<%= data.destination%>" name="destination" readonly></div>
-                        <div class="form-group"><label for="address"><strong>Source</strong></label><input class="form-control" type="text" value="<%= data.source%>" name="source" readonly></div>
-                        <div class="form-group"><label for="address"><strong>Destination State</strong></label><input class="form-control" type="text" value="<%= data.dest_state%>" name="dest_state" readonly></div>
-                        <div class="form-group"><label for="address"><strong>Source</strong></label><input class="form-control" type="text" value="<%= data.source_state%>" name="source_state%" readonly></div>
+                        <div class="form-group"><label for="address"><strong>District Source</strong></label><input class="form-control" type="text" value="<%= data.source%>" name="destination" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Source State</strong></label><input class="form-control" type="text" value="<%= data.source_state%>" name="dest_state" readonly></div>
+                        <div class="form-group"><label for="address"><strong>District Destination</strong></label><input class="form-control" type="text" value="<%= data.destination%>" name="source" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Destination State</strong></label><input class="form-control" type="text" value="<%= data.dest_state%>" name="source_state%" readonly></div>
                         
                         <div class="form-row">
                             <div class="col">
                                 <div class="form-group"><label for="city"><strong>Date of Application</strong></label><input class="form-control" type="text" value="<%=data.trip%>" name="date" readonly></div>
                             </div>
                         </div>
-                        <button class="btn btn-success" type="submit">Download</button>
+                        <input type="button" class="btn btn-primary" value="Print this page" onClick="window.print()">
                     </form>
                 </div>
             </div>    

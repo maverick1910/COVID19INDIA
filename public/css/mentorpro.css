@@ -88,3 +88,23 @@ li{
     width: 1000px;
     margin-left: 100px;
 }
+#hd{
+    color: black;
+    font-size: 60px;
+    font-weight: 700;
+}
+li{
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+#tp{
+    color: black;
+    font-size: 20px;
+    font-weight: 700;
+}
+#stat{
+    color: black;
+    font-weight: 700;
+    font-size: 40px;
+}
