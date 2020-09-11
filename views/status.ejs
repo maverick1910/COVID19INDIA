@@ -28,7 +28,7 @@
         </p>
         <p  class="lead">
             <strong>
-                <h2 id="stat">Status:</h2>
+                <h2 id="stat">Status:<%= status%></h2>
             </strong>
         </p>
     </div>
@@ -37,31 +37,35 @@
             <div class="row mb-3">
                 
                 <div  class="col-lg-8">
-                    <form id="res">
+                    <form id="res" method="POST" action='/pdfgen'>
                         <div  class="form-row">
                             <div class="col">
-                                <div class="form-group"><label for="username"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="<%= data.fname%>" name="username" readonly></div>
+                                <div class="form-group"><label for="username"><strong>First Name</strong></label><input class="form-control" type="text" value="<%= data.fname%>" name="fname" readonly></div>
                             </div>
                             <div class="col">
-                                <div class="form-group"><label for="username"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="<%= data.lname%>" name="username" readonly></div>
+                                <div class="form-group"><label for="username"><strong>Last Name</strong></label><input class="form-control" type="text" value="<%= data.lname%>" name="lname" readonly></div>
                             </div>
                             <div class="col">
                                 
-                                <div class="form-group"><label for="email"><strong>Email</strong></label><input class="form-control" type="email" placeholder="<%= data.email%>" name="email" readonly></div>
+                                <div class="form-group"><label for="email"><strong>Email</strong></label><input class="form-control" type="email" value="<%= data.email%>" name="email" readonly></div>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col">
-                                <div class="form-group"><label for="last_name"><strong>Aadhar Card </strong></label><input class="form-control" type="text" placeholder="<%= data.idcard%>" name="last_name" readonly></div>
+                                <div class="form-group"><label for="last_name"><strong>Aadhar Card </strong></label><input class="form-control" type="text" value="<%= data.idcard%>" name="last_name" readonly></div>
                             </div>
                         </div>
-                        <div class="form-group"><label for="address"><strong>Source</strong></label><input class="form-control" type="text" placeholder="<%= data.source%>" name="address" readonly></div>
-                        <div class="form-group"><label for="address"><strong>Destination</strong></label><input class="form-control" type="text" placeholder="<%= data.destination%>" name="address" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Destination</strong></label><input class="form-control" type="text" value="<%= data.destination%>" name="destination" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Source</strong></label><input class="form-control" type="text" value="<%= data.source%>" name="source" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Destination State</strong></label><input class="form-control" type="text" value="<%= data.dest_state%>" name="dest_state" readonly></div>
+                        <div class="form-group"><label for="address"><strong>Source</strong></label><input class="form-control" type="text" value="<%= data.source_state%>" name="source_state%" readonly></div>
+                        
                         <div class="form-row">
                             <div class="col">
-                                <div class="form-group"><label for="city"><strong>Date of Application</strong></label><input class="form-control" type="text" placeholder="<%=data.trip%>" name="city" readonly></div>
+                                <div class="form-group"><label for="city"><strong>Date of Application</strong></label><input class="form-control" type="text" value="<%=data.trip%>" name="date" readonly></div>
                             </div>
                         </div>
+                        <button class="btn btn-success" type="submit">Download</button>
                     </form>
                 </div>
             </div>    

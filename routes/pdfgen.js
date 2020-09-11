@@ -10,39 +10,66 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var con="Anantapur"
 
 axios.get('https://api.covid19india.org/v4/data.json').then((res) => {
-    data = JSON.parse(JSON.stringify(res.data["AP"]["districts"]));
-    console.log(data[con].total.confirmed);
+    data = JSON.parse(JSON.stringify(res.data));
+    
     
 }).catch(function (error) {
     console.log("No res data from api")
 })
 
 router.post('/pdfgen',urlencodedParser,(req,res,next)=>{
-    console.log(data);
+  
     
 
     console.log(req.body);
-  
+    var totalpop=data[req.body.dest_state]["districts"][req.body.destination].meta.population;
+    var confirmed=data[req.body.dest_state]["districts"][req.body.destination].total.confirmed;
+    console.log(confirmed/totalpop);
+    
    
-    if(data[req.body.destination].total.confirmed <= data[req.body.source].total.confirmed){
+    if(confirmed/totalpop <0.3){
     var dd = {
         content: [
-            `hello ${req.body.firstName}`,
+            // {
+            //     image: 'public/images/aplogo.png',
+            //     width: 150,
+            //     height: 150,
+            //     margin: [200, 20, 20, 20],
+            // },
+            'COVID-19 e-Pass Govt. of Telangana',
+            'Please keep the copy of e-Pass when enterning the premises of Telangana .This e-Pass if only valid for 1 week from its date of approval',
+            'Only one person is allowed to travel with the pass',
+            "Carry neccessary documents during the time of travel",
+            'e-Pass will be ceased if the applicant is seen violating the rules and regulations',
+            'The e-Pass will only be valid for 1 week ',
+            `Name: ${req.body.fname} ${req.body.lname}`,
             `Source: ${req.body.source}`,
             `Destination: ${req.body.destination}`,
-            'Approved paragraph',
-            'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+            'Status: Approved ',
+            `Date: ${req.body.date}`
         ]        
     };
 }
 else{
     var dd = {
         content: [
-            `hello ${req.body.firstName}`,
+                // {
+                //     image: '../public/images/aplogo.png',
+                //     width: 150,
+                //     height: 150,
+                //     margin: [200, 20, 20, 20],
+                // },
+                'COVID-19 e-Pass Govt. of Telangana',
+            'Please keep the copy of e-Pass when enterning the premises of Telangana .This e-Pass if only valid for 1 week from its date of approval',
+            'Only one person is allowed to travel with the pass',
+            "Carry neccessary documents during the time of travel",
+            'e-Pass will be ceased if the applicant is seen violating the rules and regulations',
+            'The e-Pass will only be valid for 1 week ',
+            `Name: ${req.body.fname} ${req.body.lname}`,
             `Source: ${req.body.source}`,
             `Destination: ${req.body.destination}`,
-            'Rejected paragraph',
-            'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+            'Status: Rejected ',
+            `Date: ${req.body.date}`
         ]        
     };
 }
