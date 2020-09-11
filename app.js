@@ -2,7 +2,7 @@ const express = require("express");
 
 const bodyParser = require("body-parser");
 var request = require("request");
-
+var collection=require('./collections/collection');
 
 
 var pdfMake = require('pdfmake/build/pdfmake.js');
@@ -24,8 +24,9 @@ app.get("/", function (req, res) {
     res.render("index");
 });
 
+
 app.get("/e-pass", function (req, res) {
-    res.render("e-pass");
+    res.render("e-pass",{collection:collection});
 });
 
 

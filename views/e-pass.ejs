@@ -137,9 +137,8 @@
             <label for="country">District</label>
             <select class="custom-select d-block w-100" id="country" name="source" required>
               <option value="">Choose...</option>
-              <option>Anantapur</option>
-              <option>Chittoor</option>
-              <option>West Godavari</option>
+              <%for(var item of collection.districts) { %>
+               <option><%= item %></option> <% } %>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
@@ -186,9 +185,9 @@
             <label for="country">District</label>
             <select class="custom-select d-block w-100" id="country" name="destination" required>
               <option value="">Choose...</option>
-              <option>Anantapur</option>
-              <option>Chittoor</option>
-              <option>West Godavari</option>
+              <option value="">Choose...</option>
+              <%for(var item of collection.districts) { %>
+               <option><%= item %></option> <% } %>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
