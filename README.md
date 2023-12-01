@@ -1,2 +1,2 @@
-# APCOVID19
-Automated COVID pass generation system for Andhra Pradesh 
+# TACOVID19
+Automated COVID pass generation system for Telangana 
